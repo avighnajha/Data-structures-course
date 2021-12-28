@@ -53,6 +53,56 @@ class LinkedList:
                 current = current.next_node
         return None
 
+    def insert(self, data, index):
+        """Inserta a new node containing data at the index required. Basically we state what position we want it at and on each iteration of the while loop decrease the value of position till it equals 1 meaning that the target position is the next one. Then we can name the next_node of the current as the new data we have and the the next_node of the new data as wahtever was on the required index.
+        Insertion takes O(1) but finidn node at insertion point takes linear. Therefore overall linear time as we take worst case.
+        """
+        if index == 0:
+            self.add(data)
+        
+        if index>0:
+            new = Node(data)
+            position = index
+            current = self.head
+
+            while position>1:
+                current.next_node
+                position -= 1
+            prev = current
+            next = current.next_node
+            prev.next_node = new
+            new.next_node = next
+
+    def remove(self, key):
+        """Removes node containing data that matches the key, returns NOne if key doesnt exist, takes O(n) time."""
+        current = self.head 
+        previous = None
+        found = False
+
+        while current and not found:
+            if current.data == key and current is self.head:
+                found = True
+                self.head = current.next_node
+            elif current.data == key:
+                found = True
+                previous.next_node = current.next_node
+            else:
+                previous = current
+                current = current.next_node
+        return current
+
+    def node_at_index(self, index):
+        if index == 0:
+            return self.head
+        else:
+            current = self.head
+            position = 0
+
+            while position < index:
+                current = current.next_node
+                position+=1
+            return current
+
     def __repr__(self):
         """Return a string representation of the list basically used to allow us to actially see the list, Takes O(n) time"""
         nodes = []
@@ -67,6 +117,8 @@ class LinkedList:
 
             current = current.next_node
         return "-->".join(nodes)
+
+    
 
 
 l = LinkedList()
