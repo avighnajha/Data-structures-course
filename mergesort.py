@@ -1,3 +1,7 @@
+import random
+import time
+
+starttime = time.time()
 def merge_sort(list):
 
     """
@@ -5,6 +9,8 @@ def merge_sort(list):
     DIvide: First find midpoint of list and split.
     Conquer: Recursively sort teh sublists created in previous step
     Combine: Merge the sorted sublists created in previous step
+
+    Takes O(n ln(n)) time
     """
 
     #Base case
@@ -22,8 +28,8 @@ def merge_sort(list):
 def split(list):
     """
     Divide the unsorted list at midpoint into sublists and returns 2 sublists - left and right
+    Takes O(ln n) time
     """
-
     mid = len(list)//2
 
     left = list[:mid]
@@ -34,6 +40,7 @@ def merge(left, right):
     """
     Merges 2 lists or arrays sorting them in the process
     Returns a new merged list
+    Runtime O(n ln(n)) time Because due to recursiveness of merge_sort function merge is called n times and each time the split() function takes ln(n) time aswell.
     """
     l = []
     i = 0 #index of left
@@ -65,8 +72,11 @@ def verify_sorted(list):
     return list[0]< list[1] and verify_sorted(list[1:])
 
 
-list = [3,49,257,235,66,22]
-
+list = []
+for i in range(10000):
+    n = random.randint(1, 50000)
+    list.append(n)
 l = merge_sort(list)
 print(l)
 print(verify_sorted(l))
+print(f"Code took: {time.time()-starttime}s")

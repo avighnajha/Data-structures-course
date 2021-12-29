@@ -23,7 +23,7 @@ def merge_sort(linked_list):
 
 
 def split(linked_list):
-    """Divide the unsorted list at midpoint into sublists"""
+    """Divide the unsorted list at midpoint into sublists. Works in o(kln(n))"""
 
     if linked_list == None or linked_list.head == None:
         left_half = linked_list 
@@ -46,6 +46,7 @@ def split(linked_list):
 def merge(left, right):
     """
     Merges 2 linked lists sorting by data in the nodes, returns a new merged list.
+    Linear time 
     """
     # create a new linked list with nodes from merging left and right
 
